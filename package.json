@@ -1,0 +1,39 @@
+{
+  "name": "fastify-template",
+  "author": "krillissue",
+  "license": "MIT",
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon --exec \"ts-node-dev -r tsconfig-paths/register src/index.ts\" | pino-pretty",
+    "prod": "NODE_ENV=production node build/index.js | pino-pretty",
+    "build": "rm -rf build && prisma generate && tsc",
+    "format": "npm run db:format && prettier --write .",
+    "lint": "eslint . --ext ts --report-unused-disable-directives --max-warnings 0",
+    "db:push": "prisma db push",
+    "db:pull": "prisma db pull",
+    "db:generate": "prisma generate",
+    "db:studio": "prisma studio",
+    "db:format": "prisma format"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.5",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
+    "eslint": "^8.56.0",
+    "nodemon": "^3.0.2",
+    "pino-pretty": "^10.3.1",
+    "prettier": "^3.1.1",
+    "prisma": "^5.7.1",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@fastify/cors": "^8.5.0",
+    "@fastify/static": "^6.12.0",
+    "@prisma/client": "^5.7.1",
+    "argon2": "^0.31.2",
+    "fastify": "^4.25.2",
+    "jsonwebtoken": "^9.0.2",
+    "path": "^0.12.7"
+  }
+}
